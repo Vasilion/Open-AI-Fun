@@ -20,9 +20,25 @@ export class AppComponent {
   openai = new OpenAIApi(configuration);
   reviewOutput = '';
   isLoading = false;
+  image_url = '';
 
   ngOnInit(): void{
 
+  }
+
+  imageGenerate(){
+    (async () => {
+    let myPrompt = this.topic;
+    this.isLoading = true;
+    const response = await this.openai.createImage({
+      prompt: myPrompt,
+      n: 1,
+      size: "1024x1024",
+    });
+    console.log(response.data);
+    this.isLoading = false;
+    this.image_url = response.data.data[0].url!;
+  })();
   }
 
   completion() {

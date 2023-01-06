@@ -13,13 +13,16 @@
       </mat-select>
     </mat-form-field>
     <button mat-raised-button (click)="completion()">Write My {{selectedEssayFormat}}!</button>
+    <button mat-raised-button (click)="imageGenerate()">Make Image</button>
   </form>
 </div>
-<div [hidden]="reviewOutput === '' && !isLoading">
+
+<div [hidden]="reviewOutput === '' && image_url === '' && !isLoading">
   <mat-card>
     <div [hidden]="!isLoading">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
+    <a href="{{image_url}}">Click to see!</a>
     <p>{{reviewOutput}}</p>
   </mat-card>
 </div>

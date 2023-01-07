@@ -21,6 +21,7 @@ export class AppComponent {
   reviewOutput = '';
   isLoading = false;
   image_url = '';
+  tmppath='';
 
   ngOnInit(): void{
 
@@ -41,6 +42,22 @@ export class AppComponent {
   })();
   }
 
+  // imageGenerateEdit(){
+  //   (async () => {
+  //   let myPrompt = this.topic;
+  //   this.isLoading = true;
+  //   const response = await this.openai.createImageVariation({
+  //     image: this.tmppath,
+  //     prompt: myPrompt,
+  //     n: 1,
+  //     size: 1,
+  //   });
+  //   console.log(response.data);
+  //   this.isLoading = false;
+  //   this.image_url = response.data.data[0].url!;
+  // })();
+  // }
+
   completion() {
     (async () => {
       let myPrompt = 'Write a' + this.selectedEssayFormat + "about " + this.topic;
@@ -60,4 +77,8 @@ export class AppComponent {
       this.reviewOutput = gptResponse.data.choices[0].text!;
     })();
   }
+
+  upload(event:any){
+    this.tmppath = URL.createObjectURL(event.target.files[0]);
+ }
 }

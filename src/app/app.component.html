@@ -16,15 +16,19 @@
       <button mat-raised-button color="primary" (click)="completion()">Write My {{selectedEssayFormat}}!</button>
       <button mat-raised-button color="accent" class="btn-sec" (click)="imageGenerate()">Make Image</button>
     </div>
+    <!-- <div (click)="uploadFile.click()">
+      <button mat-raised-button color="primary">Choose File</button>
+      <input #uploadFile (change)="upload($event)" type='file' style="display:none" />
+    </div> -->
   </form>
 </div>
 
 <div>
-  <mat-card class="my-card">
+  <mat-card class="my-card center-content">
     <div [hidden]="!isLoading" class="display-reg">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-    <img src="{{image_url}}" />
+    <img class="img-style" src="{{image_url}}" />
     <p>{{reviewOutput}}</p>
   </mat-card>
 </div>

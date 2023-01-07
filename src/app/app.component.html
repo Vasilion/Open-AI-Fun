@@ -1,28 +1,30 @@
 <div class="form center-content">
   <form class="form">
     <mat-form-field class="example-full-width">
-      <mat-label>Topic</mat-label>
-      <input matInput placeholder="Topic" [(ngModel)]="topic" id="topic" name="topic">
+      <mat-label>Topic or Image Concept</mat-label>
+      <input matInput [(ngModel)]="topic" id="topic" name="topic">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Format</mat-label>
+      <mat-label>Format (if applicable)</mat-label>
       <mat-select [(ngModel)]="selectedEssayFormat" name="essayFormat">
         <mat-option *ngFor="let format of essayFormats" placeholder="Essay Format" [value]="format">
           {{format}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button (click)="completion()">Write My {{selectedEssayFormat}}!</button>
-    <button mat-raised-button (click)="imageGenerate()">Make Image</button>
+    <div class="btn-grp">
+      <button mat-raised-button color="primary" (click)="completion()">Write My {{selectedEssayFormat}}!</button>
+      <button mat-raised-button color="accent" class="btn-sec" (click)="imageGenerate()">Make Image</button>
+    </div>
   </form>
 </div>
 
-<div [hidden]="reviewOutput === '' && image_url === '' && !isLoading">
-  <mat-card>
-    <div [hidden]="!isLoading">
+<div>
+  <mat-card class="my-card">
+    <div [hidden]="!isLoading" class="display-reg">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-    <a href="{{image_url}}">Click to see!</a>
+    <img src="{{image_url}}" />
     <p>{{reviewOutput}}</p>
   </mat-card>
 </div>

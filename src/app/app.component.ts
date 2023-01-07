@@ -33,7 +33,7 @@ export class AppComponent {
     const response = await this.openai.createImage({
       prompt: myPrompt,
       n: 1,
-      size: "1024x1024",
+      size: "512x512",
     });
     console.log(response.data);
     this.isLoading = false;
